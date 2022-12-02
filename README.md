@@ -4,7 +4,6 @@
 ## Table of Contents
  - [Description](#description)
  - [Visuals](#visuals)
- - [Usage](#usage)
  - [Credits](#credits)
 
 ## Description
