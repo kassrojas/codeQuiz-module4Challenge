@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.button {
+    background-color: red;
+    color: black;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 4px;
+    font-size: 16px;
+}
