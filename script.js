@@ -103,17 +103,23 @@ var advance = function (event) {
 };
 
 
-//not working:
-var startButtonVisibility = function() {
-    var start = document.getElementById('startButton');
+// getting rid of "start" button after click:
+startEl.addEventListener("click", function(event) {
+    var element = event.target; 
 
-    if (start.style.visibility = "visible"){
-        start.style.visibility = "hidden";
+    if (element.matches (".start")){
+        var state = element.getAttribute("data-state");
+
+    if (state === "hidden"){
+        element.dataset.state = "visible";
+    } else {
+        element.dataset.state = "hidden";
+        element.textContent = "";
+    } 
     }
-    
-}
+});
 
-startEl.addEventListener("click", displayQuestion);
+
 startEl.addEventListener("click", countdownTimer);
 document.addEventListener("click", advance);
 // advances us on any click
