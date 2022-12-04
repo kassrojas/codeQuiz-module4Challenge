@@ -1,6 +1,7 @@
 var startEl = document.querySelector("#startButton");
 var timerEl = document.querySelector("#timer");
 var questionEl = document.querySelector(".question");
+var saveScoreButton = document.querySelector("#saveScore");
 var cursor = 0;
 var score = 0;
 
@@ -125,7 +126,7 @@ document.addEventListener("click", advance);
 // advances us on any click
 
 
-// countdownTimer() works to keep track of the timer. setInterval(function () {what to do}, 1000) acts on secondsLeft to go down by 1 second every 1000m and to clearInterval() || stop the timerInterval || when secondsLeft === 0.   
+// countdownTimer() works to keep track of the timer.
 function countdownTimer(){
     var secondsLeft = 10;
     displayTime(secondsLeft);
@@ -157,8 +158,16 @@ function displayTime(secondsLeft){
     timerEl.textContent = "Time left: " + secondsLeft + " " + timeLabel;
 }
 
-function saveScoreForm() {
-   var form = document.querySelector(".scoreForm");
+saveScoreButton.addEventListener("click", function (event){
+    event.preventDefault();
 
+    var initials = document.querySelector("#initials").value;
 
-}
+    if (initials === ""){
+        displayMessage("Initials cannot be left blank");
+    }
+
+    localStorage.setItem('initials', initials);
+    renderLastScores(); //empty function rn
+
+})
