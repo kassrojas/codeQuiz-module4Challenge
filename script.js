@@ -6,9 +6,9 @@ var score = 0;
 
 var questionsArray = [
     {
-        questionText: "Javascript files should be inserted:",
-        answer: "a",
-        possible: [
+        questionText: "1 of 5. Javascript files should be inserted:",
+        correctAnswer: "a",
+        possibleAnswers: [
             "a. before </body> element",
             "b. after </body> element",
             "c. within <head> element",
@@ -16,9 +16,9 @@ var questionsArray = [
         ],
     },
     {
-        questionText: "Event delegation targets: ",
-        answer: "c",
-        possible: [
+        questionText: "2 of 5. Event delegation targets: ",
+        correctAnswer: "c",
+        possibleAnswers: [
             "a. only the children elements",
             "b. a single element on the page",
             "c. a common parent element",
@@ -26,9 +26,9 @@ var questionsArray = [
         ],
     },
     {
-        questionText: "What is the proper syntax for a function in Javascript?",
-        answer: "e",
-        possible: [
+        questionText: "3 of 5. What is the proper syntax for a function in Javascript?",
+        correctAnswer: "e",
+        possibleAnswers: [
             "a. var someName = function () {}; ", //function expression
             "b. function someName () {}; ", //function declaration
             "c. var = someName function () {};",
@@ -37,9 +37,9 @@ var questionsArray = [
         ],
     },
     {
-        questionText: "What information is stored within the () of function someName () {}; ?",
-        answer: "d",
-        possible: [
+        questionText: "4 of 5. What information is stored within the () of function someName () {}; ?",
+        correctAnswers: "d",
+        possibleAnswers: [
             "a. console.log();",
             "b. if else statements",
             "c. logic of the function",
@@ -47,9 +47,9 @@ var questionsArray = [
         ],
     },
     {
-        questionText: "What is the proper syntax for creating an array?",
-        answer: "a",
-        possible: [
+        questionText: "5 of 5. What is the proper syntax for creating an array?",
+        correctAnswers: "a",
+        possibleAnswers: [
             "a. var items = ['item1', 'item2']; ",
             "b. var items = {item1, item2}; ",
             "c. var items = ('item1', 'item2')",
@@ -58,39 +58,40 @@ var questionsArray = [
     },
 
 ];
+// contains questionText , correctAnswer, possibleAnswers
 
 
 var displayQuestion = function () {
-    countdownTimer(); 
     
     questionsEl.querySelector('h3').textContent = questionsArray[cursor].questionText;
-    questionsEl.querySelector('#possible').innerHTML = null;
+    // questionsEl.querySelector('#possibleAnswers').innerHTML = null;
    
-    for (var buttonLabel of questionsArray[cursor].possible){
+    for (var buttonLabel of questionsArray[cursor].possibleAnswers){
         var buttonEl = document.createElement('button');
         buttonEl.textContent = buttonLabel;
         buttonEl.dataset.choice = buttonLabel[0];
-        questionsEl.querySelector('#possible').appendChild(buttonEl);
+        questionsEl.appendChild(buttonEl);
     }
 };
 
-// startEl.addEventListener('click', displayQuestion);
 
-var advance = function (event){
+var advance = function (event) {
     var element = event.target;
-
+    
     if (element.matches('.questions button')){
         element.dataset.choice === questionsArray[cursor].answer;
         
-    if (cursor < questionsEl.length - 1) {
-        cursor++;
-        questionsEl.dataset.index = cursor;
-    }
+        if (cursor < questionsArray.length - 1) {
+            cursor++;
+            questionsEl.dataset.index = cursor;
+        }
         displayQuestion();
     }
-
+    
 };
 
+startEl.addEventListener('click', displayQuestion);
+startEl.addEventListener('click', countdownTimer);
 document.addEventListener('click', advance);
 // advances us on any click
 
@@ -130,7 +131,3 @@ function displayTime(secondsLeft){
 function gameOverMessage() {
     // create a function that displays a game over message
 }
-
-
-
-displayQuestion();
