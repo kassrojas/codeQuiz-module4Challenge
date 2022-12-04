@@ -1,14 +1,14 @@
-var startEl = document.querySelector('#startButton');
-var timerEl = document.querySelector('#timer');
-var questionsEl = document.querySelector('.questions');
+var startEl = document.querySelector("#startButton");
+var timerEl = document.querySelector("#timer");
+var questionEl = document.querySelector(".question");
 var cursor = 0;
 var score = 0;
 
-var questionsArray = [
+var questions = [
     {
-        questionText: "1 of 5. Javascript files should be inserted:",
+        text: "1 of 5. Javascript files should be inserted:",
         correctAnswer: "a",
-        possibleAnswers: [
+        possible: [
             "a. before </body> element",
             "b. after </body> element",
             "c. within <head> element",
@@ -16,9 +16,9 @@ var questionsArray = [
         ],
     },
     {
-        questionText: "2 of 5. Event delegation targets: ",
+        text: "2 of 5. Event delegation targets: ",
         correctAnswer: "c",
-        possibleAnswers: [
+        possible: [
             "a. only the children elements",
             "b. a single element on the page",
             "c. a common parent element",
@@ -26,9 +26,9 @@ var questionsArray = [
         ],
     },
     {
-        questionText: "3 of 5. What is the proper syntax for a function in Javascript?",
+        text: "3 of 5. What is the proper syntax for a function in Javascript?",
         correctAnswer: "e",
-        possibleAnswers: [
+        possible: [
             "a. var someName = function () {}; ", //function expression
             "b. function someName () {}; ", //function declaration
             "c. var = someName function () {};",
@@ -37,9 +37,9 @@ var questionsArray = [
         ],
     },
     {
-        questionText: "4 of 5. What information is stored within the () of function someName () {}; ?",
+        text: "4 of 5. What information is stored within the () of function someName () {}; ?",
         correctAnswers: "d",
-        possibleAnswers: [
+        possible: [
             "a. console.log();",
             "b. if else statements",
             "c. logic of the function",
@@ -47,9 +47,9 @@ var questionsArray = [
         ],
     },
     {
-        questionText: "5 of 5. What is the proper syntax for creating an array?",
+        text: "5 of 5. What is the proper syntax for creating an array?",
         correctAnswers: "a",
-        possibleAnswers: [
+        possible: [
             "a. var items = ['item1', 'item2']; ",
             "b. var items = {item1, item2}; ",
             "c. var items = ('item1', 'item2')",
@@ -58,19 +58,20 @@ var questionsArray = [
     },
 
 ];
-// contains questionText , correctAnswer, possibleAnswers
+// contains questionText , correctAnswer, possible
 
+correctAnswers = ["a", "c", "e", "d", "a"];
 
 var displayQuestion = function () {
     
-    questionsEl.querySelector('h3').textContent = questionsArray[cursor].questionText;
-    // questionsEl.querySelector('#possibleAnswers').innerHTML = null;
+    questionEl.querySelector("h3").textContent = questions[cursor].text;
+    questionEl.querySelector("#possible").innerHTML = null;
    
-    for (var buttonLabel of questionsArray[cursor].possibleAnswers){
-        var buttonEl = document.createElement('button');
+    for (var buttonLabel of questions[cursor].possible){
+        var buttonEl = document.createElement("button");
         buttonEl.textContent = buttonLabel;
         buttonEl.dataset.choice = buttonLabel[0];
-        questionsEl.appendChild(buttonEl);
+        questionEl.querySelector("#possible").appendChild(buttonEl);
     }
 };
 
@@ -78,21 +79,31 @@ var displayQuestion = function () {
 var advance = function (event) {
     var element = event.target;
     
-    if (element.matches('.questions button')){
-        element.dataset.choice === questionsArray[cursor].answer;
+    if (element.matches(".question button")){
+        element.dataset.choice === correctAnswers[cursor];
         
-        if (cursor < questionsArray.length - 1) {
+        if (cursor < questions.length - 1) {
             cursor++;
-            questionsEl.dataset.index = cursor;
+            questionEl.dataset.index = cursor;
+
         }
         displayQuestion();
     }
     
 };
 
-startEl.addEventListener('click', displayQuestion);
-startEl.addEventListener('click', countdownTimer);
-document.addEventListener('click', advance);
+var startButtonVisibility = function() {
+    var start = document.getElementById('startButton');
+
+    if (start.style.visibility = "visible"){
+        start.style.visibility = "hidden";
+    }
+    
+}
+
+startEl.addEventListener("click", displayQuestion);
+startEl.addEventListener("click", countdownTimer);
+document.addEventListener("click", advance);
 // advances us on any click
 
 
@@ -111,7 +122,7 @@ function countdownTimer(){
         if (secondsLeft === 0){
             clearInterval(timerInterval);
             gameOverMessage();
-            timerEl.textContent = '';
+            timerEl.textContent = "";
         }
         
     }, 1000);
@@ -119,13 +130,13 @@ function countdownTimer(){
 
 //displayTime() maintains proper labels on countdownTimer
 function displayTime(secondsLeft){
-    var timeLabel = 'seconds';
+    var timeLabel = "seconds";
 
     if (secondsLeft === 1) {
-        timeLabel = 'second';
+        timeLabel = "second";
     }
 
-    timerEl.textContent = 'Time left: ' + secondsLeft + ' ' + timeLabel;
+    timerEl.textContent = "Time left: " + secondsLeft + " " + timeLabel;
 }
 
 function gameOverMessage() {
