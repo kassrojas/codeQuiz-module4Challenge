@@ -1,4 +1,4 @@
-var startEl = document.querySelector("#startButton");
+var startEl = document.querySelector(".start");
 var timerEl = document.querySelector("#timer");
 var questionEl = document.querySelector(".question");
 var saveScoreButton = document.querySelector("#saveScore");
@@ -63,6 +63,7 @@ var questions = [
 
 correctAnswers = ["a", "c", "e", "d", "a"];
 
+//displayQuestions
 var displayQuestion = function () {
     
     questionEl.querySelector("h3").textContent = questions[cursor].text;
@@ -76,7 +77,7 @@ var displayQuestion = function () {
     }
 };
 
-
+// advancing through questions
 var advance = function (event) {
     var element = event.target;
     
@@ -87,8 +88,8 @@ var advance = function (event) {
         if (cursor < questions.length - 1) {
             cursor++;
             questionEl.dataset.index = cursor;
-        } else if (cursor = questions.length -1){
-            saveScoreForm();
+        } else if (cursor = questions.length){
+            saveScoreForm(); // empty function
         }
 
         score++;
@@ -105,20 +106,9 @@ var advance = function (event) {
 
 
 // getting rid of "start" button after click:
-startEl.addEventListener("click", function(event) {
-    var element = event.target; 
-
-    if (element.matches (".start")){
-        var state = element.getAttribute("data-state");
-
-    if (state === "hidden"){
-        element.dataset.state = "visible";
-    } else {
-        element.dataset.state = "hidden";
-        element.textContent = "";
-    } 
-    }
-});
+function change () {
+    document.querySelector(".start").style.display = "none";
+}
 
 
 startEl.addEventListener("click", countdownTimer);
@@ -140,8 +130,8 @@ function countdownTimer(){
         
         if (secondsLeft === 0){
             clearInterval(timerInterval);
-            saveScoreForm();
             timerEl.textContent = "Time's up!";
+            saveScoreForm(); //empty function
         }
         
     }, 1000);
@@ -156,8 +146,9 @@ function displayTime(secondsLeft){
     }
 
     timerEl.textContent = "Time left: " + secondsLeft + " " + timeLabel;
-}
+};
 
+//save scores to local storage
 saveScoreButton.addEventListener("click", function (event){
     event.preventDefault();
 
@@ -170,4 +161,4 @@ saveScoreButton.addEventListener("click", function (event){
     localStorage.setItem('initials', initials);
     renderLastScores(); //empty function rn
 
-})
+});
