@@ -80,18 +80,30 @@ var advance = function (event) {
     var element = event.target;
     
     if (element.matches(".question button")){
+        
         element.dataset.choice === correctAnswers[cursor];
         
         if (cursor < questions.length - 1) {
             cursor++;
             questionEl.dataset.index = cursor;
-
+        } else if (cursor = questions.length -1){
+            saveScoreForm();
         }
+
+        score++;
         displayQuestion();
+
+    } else {
+        
+        element.dataset.choice !== correctAnswers[cursor];
+        score--;
+        displayQuestion(); 
     }
-    
+    console.log(score); // score--; not working 
 };
 
+
+//not working:
 var startButtonVisibility = function() {
     var start = document.getElementById('startButton');
 
@@ -109,7 +121,7 @@ document.addEventListener("click", advance);
 
 // countdownTimer() works to keep track of the timer. setInterval(function () {what to do}, 1000) acts on secondsLeft to go down by 1 second every 1000m and to clearInterval() || stop the timerInterval || when secondsLeft === 0.   
 function countdownTimer(){
-    var secondsLeft = 60;
+    var secondsLeft = 10;
     displayTime(secondsLeft);
     
     // console.log(secondsLeft);
@@ -121,8 +133,8 @@ function countdownTimer(){
         
         if (secondsLeft === 0){
             clearInterval(timerInterval);
-            gameOverMessage();
-            timerEl.textContent = "";
+            saveScoreForm();
+            timerEl.textContent = "Time's up!";
         }
         
     }, 1000);
@@ -139,6 +151,8 @@ function displayTime(secondsLeft){
     timerEl.textContent = "Time left: " + secondsLeft + " " + timeLabel;
 }
 
-function gameOverMessage() {
-    // create a function that displays a game over message
+function saveScoreForm() {
+   var form = document.querySelector(".scoreForm");
+
+
 }
