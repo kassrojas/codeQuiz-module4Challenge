@@ -81,8 +81,8 @@ var displayQuestion = function () {
 
 };
 
+// displays scores, previous scores, input, and gets rid of questions
 function saveScore(score){
-    console.log(score);
     document.querySelector(".question").style.display = "none";
     document.querySelector(".scoreForm").style.visibility = "visible";
     displayScoreEl.querySelector("p").textContent = score.toString();
@@ -100,12 +100,9 @@ var advance = function (event) {
             displayQuestion(); 
             
         } else {
-            wrong = true;
             secondsLeft--;
-            console.log('seconds left'+secondsLeft);
             displayQuestion(); 
         }
-    
         if (cursor < questions.length -1) {
             cursor++;
             questionEl.dataset.index = cursor;
@@ -136,7 +133,7 @@ document.addEventListener("click", advance);
 
 // countdownTimer() works to keep track of the timer.
 function countdownTimer(){
-    secondsLeft = 25;
+    secondsLeft = 10;
     displayTime(secondsLeft);
     displayQuestion();
 
@@ -150,6 +147,7 @@ function countdownTimer(){
             if (secondsLeft <= 0){
                 clearInterval(timerInterval);
                 timerEl.textContent = "Time's up!";
+                saveScore(0);
             }
 
         }, 1000);

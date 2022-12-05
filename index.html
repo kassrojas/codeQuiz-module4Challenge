@@ -11,10 +11,16 @@
 <body>
     <header class="header">
         <h1> Coding Quiz</h1>
+         <ul>Rules:
+            <li>You have 25s to complete the quiz.</li>
+            <li>Wrong answers cost you 1s.</li>
+            <li>Final score is your time left.</li>
+         </ul>
+
         <h2 id="timer"></h2>
     </header>
     <div>
-        <button onclick="change()" class="start">Start Quiz! </button>
+        <button onclick="change()" class="start">Start Quiz!</button>
     </div>
 
     <section class="question" data-index="0">
@@ -23,9 +29,9 @@
     </section>
     
     
-    <section> 
-     <form>
-        <div class="scoreForm" style="visibility:hidden">
+    <section class="scoreForm" style="visibility:hidden"> 
+        <form>
+         <div>
          <label for="intials">Initials:</label><br>
          <input type="text" id="initials" name="initials" placeholder="initials"><br>
          <p id="scores" name="scores"></p>
@@ -36,14 +42,14 @@
                
         </div>
      </form>
+     
+     <div> 
+         <h2> Previous Scores: </h2>
+         <p><span id="user-initials"></span></p>
+         <p><span id="user-scores"></span></p>
+        </div>
+        
     </section>
-
-    <div> 
-        <h2> Previous Scores: </h2>
-        <p><span id="user-initials"></span></p>
-        <p><span id="user-scores"></span></p>
-    </div>
-
 
     
     
