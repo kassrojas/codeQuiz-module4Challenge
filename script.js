@@ -63,8 +63,6 @@ var questions = [
 ];
 // contains text , correctAnswer, possible
 
-correctAnswers = ["a", "c", "e", "d", "a"];
-
 //displayQuestions
 var displayQuestion = function () {
     
