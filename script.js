@@ -4,6 +4,7 @@ var questionEl = document.querySelector(".question");
 var saveScoreButton = document.querySelector("#saveScore");
 var initialsSpan = document.querySelector("#user-initials");
 var scoresSpan = document.querySelector("#user-scores");
+var displayScoreEl = document.querySelector(".scoreForm");
 var cursor = 0;
 var score = 0;
 var timerInterval;
@@ -80,44 +81,48 @@ var displayQuestion = function () {
 
 };
 
-function saveScore(){
+function saveScore(score){
+    console.log(score);
     document.querySelector(".question").style.display = "none";
     document.querySelector(".scoreForm").style.visibility = "visible";
+    displayScoreEl.querySelector("p").textContent = score.toString();
 }
 
 
 // advancing through questions
 var advance = function (event) {
     var element = event.target;
+    var wrong = false;
     
     if (element.matches(".question button")){
-        console.log(element);
+        
         if(element.dataset.choice === questions[cursor].correctAnswer) {
-            score++;
-            console.log(score);
-        }
-        else {
+            displayQuestion(); 
+            
+        } else {
+            wrong = true;
             secondsLeft--;
-            score--;
+            console.log('seconds left'+secondsLeft);
             displayQuestion(); 
         }
     
         if (cursor < questions.length -1) {
             cursor++;
             questionEl.dataset.index = cursor;
-        }
-        else {
-            var lastQuestion = true;
+        } else {
+            if (wrong){
+                secondsLeft++;
+            }
+            score = secondsLeft;
+            console.log('at score'+score);
             clearInterval(timerInterval);
-            timerEl.textContent = "Time's up!";
-        } 
-        if (lastQuestion){
-            saveScore();
-        }
-        // score++;
+            saveScore(score);
+            } 
+     
+
         displayQuestion();
     }
-    // console.log(score); // score--; not working 
+    
 };
 
 
