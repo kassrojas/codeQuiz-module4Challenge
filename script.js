@@ -92,7 +92,6 @@ function saveScore(score){
 // advancing through questions
 var advance = function (event) {
     var element = event.target;
-    var wrong = false;
     
     if (element.matches(".question button")){
         
@@ -110,15 +109,11 @@ var advance = function (event) {
             cursor++;
             questionEl.dataset.index = cursor;
         } else {
-            if (wrong){
-                secondsLeft++;
-            }
             score = secondsLeft;
-            console.log('at score'+score);
             clearInterval(timerInterval);
+            timerEl.textContent = "Quiz Over!";
             saveScore(score);
-            } 
-     
+        } 
 
         displayQuestion();
     }
