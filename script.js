@@ -86,6 +86,7 @@ function saveScore(score){
     document.querySelector(".question").style.display = "none";
     document.querySelector(".scoreForm").style.visibility = "visible";
     displayScoreEl.querySelector("p").textContent = score.toString();
+    renderLastScores();
 }
 
 
@@ -169,22 +170,21 @@ function displayTime(secondsLeft){
 //save scores to local storage
 saveScoreButton.addEventListener("click", function (event){
     event.preventDefault();
-
+    
     var initials = document.querySelector("#initials").value;
-
+    
     if (initials === ""){
         displayMessage("Initials cannot be left blank");
     }
-
+    
     localStorage.setItem('initials', initials);
-    // localStorage.setItem('scores', scores); dont have scores yet
+    localStorage.setItem('scores', score); 
     
     renderLastScores(); 
 
 });
 
 function renderLastScores() {
-    initialsSpan.textContent = localStorage.getItem("intiails");
-    // scoresSpan.textContent = localStorage.getItem("#"); dont have scores yet
-
+    initialsSpan.textContent = localStorage.getItem("initials");
+    scoresSpan.textContent = localStorage.getItem("scores"); 
 }
