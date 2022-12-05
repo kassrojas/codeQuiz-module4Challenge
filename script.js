@@ -4,6 +4,7 @@ var questionEl = document.querySelector(".question");
 var saveScoreButton = document.querySelector("#saveScore");
 var cursor = 0;
 var score = 0;
+var timer = true;
 
 var questions = [
     {
@@ -75,7 +76,7 @@ var displayQuestion = function () {
         buttonEl.dataset.choice = buttonLabel[0];
         questionEl.querySelector("#possible").appendChild(buttonEl);
     }
-    
+
 };
 
 function saveScore(){
@@ -97,14 +98,15 @@ var advance = function (event) {
             questionEl.dataset.index = cursor;
         }
         else {
-            var chek = true;
+            var lastQuestion = true;
+            timer = false;
         } 
-        if (chek){
+        if (lastQuestion){
             saveScore();
         }
         score++;
         displayQuestion();
-
+        
     } else {
         
         element.dataset.choice !== correctAnswers[cursor];
@@ -132,19 +134,19 @@ function countdownTimer(){
     displayTime(secondsLeft);
     
     // console.log(secondsLeft);
-    
-    var timerInterval = setInterval(function() {
-        secondsLeft--;
-        displayTime(secondsLeft);
+    if (timer){
+        var timerInterval = setInterval(function() {
+            secondsLeft--;
+            displayTime(secondsLeft);
         
         
-        if (secondsLeft === 0){
-            clearInterval(timerInterval);
-            timerEl.textContent = "Time's up!";
-            saveScoreForm(); //empty function
-        }
-        
-    }, 1000);
+            if (secondsLeft === 0){
+                clearInterval(timerInterval);
+                timerEl.textContent = "Time's up!";
+            }
+
+        }, 1000);
+    };
 }
 
 //displayTime() maintains proper labels on countdownTimer
