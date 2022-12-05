@@ -135,12 +135,12 @@ document.addEventListener("click", advance);
 
 // countdownTimer() works to keep track of the timer.
 function countdownTimer(){
-    secondsLeft = 10;
+    secondsLeft = 25;
     displayTime(secondsLeft);
     displayQuestion();
 
     // console.log(secondsLeft);
-    if (timer){
+    if (timerEl){
         timerInterval = setInterval(function() {
             secondsLeft--;
             displayTime(secondsLeft);
