@@ -12,7 +12,7 @@
         <h1> Coding Quiz</h1>
         <h2 id="timer"></h2>
     </header>
-    <div data-state="visible">
+    <div>
         <button onclick="change()" class="start">Start Quiz! </button>
     </div>
 
@@ -24,13 +24,13 @@
     
     <section> 
      <form>
-        <div class="scoreForm">
+        <div class="scoreForm" style="visibility:hidden">
          <label for="intials">Initials:</label><br>
          <input type="text" id="initials" name="initials" placeholder="KR"><br>
-        </div>
          <button id="saveScore">
-            Save my score!
-        </button>
+             Save my score!
+            </button>
+        </div>
      </form>
     </section>
     

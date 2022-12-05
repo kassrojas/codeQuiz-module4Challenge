@@ -75,14 +75,12 @@ var displayQuestion = function () {
         buttonEl.dataset.choice = buttonLabel[0];
         questionEl.querySelector("#possible").appendChild(buttonEl);
     }
-    // if (questions.length - 1){
-    //     console.log('im here');
-    //     saveScore();
-    // }
+    
 };
 
 function saveScore(){
     document.querySelector(".question").style.display = "none";
+    document.querySelector(".scoreForm").style.visibility = "visible";
 }
 
 
@@ -97,10 +95,12 @@ var advance = function (event) {
         if (cursor < questions.length -1) {
             cursor++;
             questionEl.dataset.index = cursor;
-            console.log(questionEl.dataset.index);
+        }
+        else {
+            var chek = true;
         } 
-        if (cursor == questions.length -1){
-            console.log('im here');
+        if (chek){
+            saveScore();
         }
         score++;
         displayQuestion();
