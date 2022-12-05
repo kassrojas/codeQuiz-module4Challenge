@@ -2,6 +2,8 @@ var startEl = document.querySelector(".start");
 var timerEl = document.querySelector("#timer");
 var questionEl = document.querySelector(".question");
 var saveScoreButton = document.querySelector("#saveScore");
+var initialsSpan = document.querySelector("#user-initials");
+var scoresSpan = document.querySelector("#user-scores");
 var cursor = 0;
 var score = 0;
 var timerInterval;
@@ -175,6 +177,14 @@ saveScoreButton.addEventListener("click", function (event){
     }
 
     localStorage.setItem('initials', initials);
-    renderLastScores(); //empty function rn
+    // localStorage.setItem('scores', scores); dont have scores yet
+    
+    renderLastScores(); 
 
 });
+
+function renderLastScores() {
+    initialsSpan.textContent = localStorage.getItem("intiails");
+    // scoresSpan.textContent = localStorage.getItem("#"); dont have scores yet
+
+}
