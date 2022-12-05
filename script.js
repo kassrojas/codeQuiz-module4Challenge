@@ -4,7 +4,8 @@ var questionEl = document.querySelector(".question");
 var saveScoreButton = document.querySelector("#saveScore");
 var cursor = 0;
 var score = 0;
-var timer = true;
+var timerInterval;
+var secondsLeft; 
 
 var questions = [
     {
@@ -40,7 +41,7 @@ var questions = [
     },
     {
         text: "4 of 5. What information is stored within the () of function someName () {}; ?",
-        correctAnswers: "d",
+        correctAnswer: "d",
         possible: [
             "a. console.log();",
             "b. if else statements",
@@ -50,7 +51,7 @@ var questions = [
     },
     {
         text: "5 of 5. What is the proper syntax for creating an array?",
-        correctAnswers: "a",
+        correctAnswer: "a",
         possible: [
             "a. var items = ['item1', 'item2']; ",
             "b. var items = {item1, item2}; ",
@@ -60,7 +61,7 @@ var questions = [
     },
 
 ];
-// contains questionText , correctAnswer, possible
+// contains text , correctAnswer, possible
 
 correctAnswers = ["a", "c", "e", "d", "a"];
 
@@ -90,28 +91,31 @@ var advance = function (event) {
     var element = event.target;
     
     if (element.matches(".question button")){
-        
-        element.dataset.choice === correctAnswers[cursor];
-        
+        console.log(element);
+        if(element.dataset.choice === questions[cursor].correctAnswer) {
+            score++;
+            console.log(score);
+        }
+        else {
+            secondsLeft--;
+            score--;
+            displayQuestion(); 
+        }
+    
         if (cursor < questions.length -1) {
             cursor++;
             questionEl.dataset.index = cursor;
         }
         else {
             var lastQuestion = true;
-            timer = false;
+            clearInterval(timerInterval);
+            timerEl.textContent = "Time's up!";
         } 
         if (lastQuestion){
             saveScore();
         }
-        score++;
+        // score++;
         displayQuestion();
-        
-    } else {
-        
-        element.dataset.choice !== correctAnswers[cursor];
-        score--;
-        displayQuestion(); 
     }
     // console.log(score); // score--; not working 
 };
@@ -122,25 +126,27 @@ function change () {
     document.querySelector(".start").style.display = "none";
 }
 
-
+//start button function
 startEl.addEventListener("click", countdownTimer);
-document.addEventListener("click", advance);
+
 // advances us on any click
+document.addEventListener("click", advance);
 
 
 // countdownTimer() works to keep track of the timer.
 function countdownTimer(){
-    var secondsLeft = 10;
+    secondsLeft = 10;
     displayTime(secondsLeft);
-    
+    displayQuestion();
+
     // console.log(secondsLeft);
     if (timer){
-        var timerInterval = setInterval(function() {
+        timerInterval = setInterval(function() {
             secondsLeft--;
             displayTime(secondsLeft);
         
         
-            if (secondsLeft === 0){
+            if (secondsLeft <= 0){
                 clearInterval(timerInterval);
                 timerEl.textContent = "Time's up!";
             }
