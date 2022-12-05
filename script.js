@@ -75,7 +75,16 @@ var displayQuestion = function () {
         buttonEl.dataset.choice = buttonLabel[0];
         questionEl.querySelector("#possible").appendChild(buttonEl);
     }
+    // if (questions.length - 1){
+    //     console.log('im here');
+    //     saveScore();
+    // }
 };
+
+function saveScore(){
+    document.querySelector(".question").style.display = "none";
+}
+
 
 // advancing through questions
 var advance = function (event) {
@@ -85,13 +94,14 @@ var advance = function (event) {
         
         element.dataset.choice === correctAnswers[cursor];
         
-        if (cursor < questions.length - 1) {
+        if (cursor < questions.length -1) {
             cursor++;
             questionEl.dataset.index = cursor;
-        } else if (cursor = questions.length){
-            saveScoreForm(); // empty function
+            console.log(questionEl.dataset.index);
+        } 
+        if (cursor == questions.length -1){
+            console.log('im here');
         }
-
         score++;
         displayQuestion();
 
@@ -101,7 +111,7 @@ var advance = function (event) {
         score--;
         displayQuestion(); 
     }
-    console.log(score); // score--; not working 
+    // console.log(score); // score--; not working 
 };
 
 
