@@ -5,20 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz Module 04</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
     <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
 </head>
+
 <body>
+   
     <header class="header">
         <h1> Coding Quiz</h1>
-         <ul>Rules:
-            <li>You have 25s to complete the quiz.</li>
-            <li>Wrong answers cost you 1s.</li>
-            <li>Final score is your time left.</li>
-         </ul>
-
-        <h2 id="timer"></h2>
     </header>
+    <section><ul>Rules:
+        <li>You have 25s to complete the quiz.</li>
+        <li>Wrong answers cost you 1s.</li>
+        <li>Final score is your time left.</li>
+    </ul>
+    <h2 id="timer"></h2>
+</section>
+
+<main class="container">
     <div>
         <button onclick="change()" class="start">Start Quiz!</button>
     </div>
@@ -44,13 +48,13 @@
      </form>
      
      <div> 
-         <h2> Previous Scores: </h2>
+         <h2> Previous Score: </h2>
          <p><span id="user-initials"></span></p>
          <p><span id="user-scores"></span></p>
         </div>
         
     </section>
-
+</main>
     
     
     
