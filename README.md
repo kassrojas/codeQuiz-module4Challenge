@@ -11,10 +11,20 @@ This Coding Quiz takes Javascript to a whole new level. Upon clicking "Start Qui
 
 
 ## Visuals
-Below is a screenshot of the working website:
+Below are screenshots of the working website. 
+
+This is the quiz start page.
+
 ![Webpage Screenshot](images/codequizstartpage.png)
+
+This is the quiz timer counting down. 
+
 ![Webpage Screenshot](images/codequizmidquestion.png)
+
+This page displays the score and allows for user input. 
+
 ![Webpage Screenshot](images/codequizendpage.png)
+
 
 ## Acknowledgments
 
