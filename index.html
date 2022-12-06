@@ -14,13 +14,14 @@
     <header class="header">
         <h1> Coding Quiz</h1>
     </header>
+    
     <section><ul>Rules:
         <li>You have 25s to complete the quiz.</li>
         <li>Wrong answers cost you 1s.</li>
         <li>Final score is your time left.</li>
     </ul>
     <h2 id="timer"></h2>
-</section>
+    </section>
 
 <main class="container">
     <div>
@@ -31,32 +32,24 @@
         <h3 id="next"></h3>
         <div id="possible"></div>
     </section>
+</main>
     
     
     <section class="scoreForm" style="visibility:hidden"> 
         <form>
-         <div>
-         <label for="intials">Initials:</label><br>
-         <input type="text" id="initials" name="initials" placeholder="initials"><br>
-         <p id="scores" name="scores"></p>
-         <button id="saveScore">
-             SAVE
-            </button>
-        <button class="start"> TRY AGAIN </button>
-               
-        </div>
-     </form>
+            <label for="intials">Initials:</label><br>
+            <input type="text" id="initials" name="initials" placeholder="initials"><br>
+            <p id="scores" name="scores"></p>
+            <button id="saveScore">SAVE SCORE</button>
+            <button class="start"> TRY AGAIN </button>
+        </form>
      
-     <div> 
-         <h2> Previous Score: </h2>
-         <p><span id="user-initials"></span></p>
-         <p><span id="user-scores"></span></p>
+        <div> 
+            <h2> Previous Score: </h2>
+            <p><span id="user-initials"></span></p>
+            <p><span id="user-scores"></span></p>
         </div>
-        
     </section>
-</main>
-    
-    
     
     <script src="./script.js"></script>
 </body>

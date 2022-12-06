@@ -35,8 +35,8 @@ var questions = [
         text: "3 of 5. What is the proper syntax for a function in Javascript?",
         correctAnswer: "e",
         possible: [
-            "a. var someName = function () {}; ", //function expression
-            "b. function someName () {}; ", //function declaration
+            "a. var someName = function () {}; ", 
+            "b. function someName () {}; ", 
             "c. var = someName function () {};",
             "d. all of the above",
             "e. only a and b",
@@ -87,7 +87,7 @@ function saveScore(score){
     document.querySelector(".scoreForm").style.visibility = "visible";
     displayScoreEl.querySelector("p").textContent = score.toString();
     renderLastScores();
-}
+};
 
 
 // advancing through questions
@@ -122,7 +122,7 @@ var advance = function (event) {
 // getting rid of "start" button after click:
 function change () {
     document.querySelector(".start").style.display = "none";
-}
+};
 
 //start button function
 startEl.addEventListener("click", countdownTimer);
@@ -137,7 +137,6 @@ function countdownTimer(){
     displayTime(secondsLeft);
     displayQuestion();
 
-    // console.log(secondsLeft);
     if (timerEl){
         timerInterval = setInterval(function() {
             secondsLeft--;
@@ -152,7 +151,7 @@ function countdownTimer(){
 
         }, 1000);
     };
-}
+};
 
 //displayTime() maintains proper labels on countdownTimer
 function displayTime(secondsLeft){
@@ -185,4 +184,4 @@ saveScoreButton.addEventListener("click", function (event){
 function renderLastScores() {
     initialsSpan.textContent = localStorage.getItem("initials");
     scoresSpan.textContent = localStorage.getItem("scores"); 
-}
+};

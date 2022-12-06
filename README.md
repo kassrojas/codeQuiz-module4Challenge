@@ -1,5 +1,5 @@
 # codeQuiz-module4Challenge
-[Link to my project](htttps://#)
+[Link to my project](https://kassrojas.github.io/codeQuiz-module4Challenge/)
 
 ## Table of Contents
  - [Description](#description)
@@ -7,17 +7,17 @@
  - [Acknowledgments](#Acknowledgments)
 
 ## Description
-This Coding Quiz takes Javascript to a whole new level. Upon clicking "Start Quiz!", the logic in Javascript displays questions. Questions advancee when the user selects an answer. If the answer is incorrect, the user is penalized by taking away time. The final score, the time left, is displayed at the end. If the user completes the questions or the time runs out, the test is over. The user is then able to input their initials and save their score locally. User can try the quiz again and when they have complete the text again, their previous scores are displayed.
+This Coding Quiz takes Javascript to a whole new level. Upon clicking "Start Quiz!" the logic in Javascript displays questions. Questions advance when the user selects an answer. If the answer is incorrect, the user is penalized by taking away time. The final score, the time left, is displayed at the end. When the user completes all of the questions or the time runs out, the test is over. The user is then able to input their initials and save their score locally. User can try the quiz again and when they have completed the test again, their previous scores are displayed.
 
 
 ## Visuals
 Below are screenshots of the working website. 
 
-This is the quiz start page.
+This displays the quiz's start page.
 
 ![Webpage Screenshot](images/codequizstartpage.png)
 
-This is the quiz timer counting down. 
+This displays the quiz timer counting down. 
 
 ![Webpage Screenshot](images/codequizmidquestion.png)
 
