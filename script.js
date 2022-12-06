@@ -66,7 +66,7 @@ var questions = [
 ];
 // contains text , correctAnswer, possible
 
-//displayQuestions
+//displays questions
 var displayQuestion = function () {
     
     questionEl.querySelector("h3").textContent = questions[cursor].text;
@@ -81,7 +81,7 @@ var displayQuestion = function () {
 
 };
 
-// displays scores, previous scores, input, and gets rid of questions
+// displays scores, previous scores, input, and hides questions
 function saveScore(score){
     document.querySelector(".question").style.display = "none";
     document.querySelector(".scoreForm").style.visibility = "visible";
@@ -90,7 +90,7 @@ function saveScore(score){
 };
 
 
-// advancing through questions
+// advancing through questions on click
 var advance = function (event) {
     var element = event.target;
     
@@ -131,7 +131,7 @@ startEl.addEventListener("click", countdownTimer);
 document.addEventListener("click", advance);
 
 
-// countdownTimer() works to keep track of the timer.
+// keeps track of timer
 function countdownTimer(){
     secondsLeft = 25;
     displayTime(secondsLeft);
@@ -153,7 +153,7 @@ function countdownTimer(){
     };
 };
 
-//displayTime() maintains proper labels on countdownTimer
+// maintains proper labels on countdownTimer
 function displayTime(secondsLeft){
     var timeLabel = "seconds";
 
@@ -181,6 +181,7 @@ saveScoreButton.addEventListener("click", function (event){
 
 });
 
+// retrieves from local storage
 function renderLastScores() {
     initialsSpan.textContent = localStorage.getItem("initials");
     scoresSpan.textContent = localStorage.getItem("scores"); 
