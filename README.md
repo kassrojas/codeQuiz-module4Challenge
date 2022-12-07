@@ -15,15 +15,15 @@ Below are screenshots of the working website.
 
 This displays the quiz's start page.
 
-![Webpage Screenshot](images/codequizstartpage.png)
+![Webpage Screenshot](/assets/images/codequizstartpage.png)
 
 This displays the quiz timer counting down. 
 
-![Webpage Screenshot](images/codequizmidquestion.png)
+![Webpage Screenshot](/assets/images/codequizmidquestion.png)
 
 This page displays the score and allows for user input. 
 
-![Webpage Screenshot](images/codequizendpage.png)
+![Webpage Screenshot](/assets/images/codequizendpage.png)
 
 
 ## Acknowledgments
